@@ -49,18 +49,50 @@ const App = () => {
 
   }
 
+  const handleMultiNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrenteNumber('0');
+      setOperation('x')
+    }
+    else{
+      const multi = Number(firstNumber) * Number(currentNumber);
+      setCurrenteNumber(String(multi));
+      setOperation('');
+    }
+  }
+
+  const handleDivNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrenteNumber('0');
+      setOperation('/')
+    }
+    else{
+      const div = Number(firstNumber) / Number(currentNumber);
+      setCurrenteNumber(String(div));
+      setOperation('');
+    }
+  }
+
   const handleEquals = () => {
 
     if(firstNumber !== '0' && operation !== '' && currentNumber !== '0'){
         switch(operation){
           case '+':
-            handleSumNumbers();
-            break;
-          case '-':
-            handleMinusNumbers();
-            break;
-          default: 
-            break;
+          handleSumNumbers();
+          break;
+        case '-':
+          handleMinusNumbers();
+          break;
+        case 'x':
+          handleMultiNumbers();
+          break;
+        case '/':
+          handleDivNumbers();
+          break;
+        default:
+          break;
         }
     }
 
